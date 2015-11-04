@@ -1,0 +1,652 @@
+\documentclass{beamer} %this is the preamble, tells you what kind of document you're making, tells latex how to compile it  
+
+\usepackage{listings}
+\usepackage{relsize}
+\usepackage{multimedia}
+\usepackage{verbatim}
+\usepackage{media9} % Video stuff
+
+\setbeamercolor{alerted text}{fg=blue}
+\setbeamercolor{set1} {bg=blue!60, fg=green} 
+\setbeamercolor{set2}{bg=red!40, fg=yellow}
+\setbeamercolor{set3}{bg=black!40, fg=black}
+\setbeamercolor{set4}{bg=black!20, fg=black}
+\setbeamercovered{dynamic}	
+
+\mode<beamer>{\setbeamertemplate{blocks}[rounded][shadow=true]}
+\setbeamercolor{block body example}{fg=blue, bg=black!20}
+
+%Template
+\usepackage{textpos} % package for the positioning
+\usepackage{graphicx}
+%\graphicspath{C:/Users/Sandokan/GoogleDrive/LaTeX Sessions/Beamer template}
+\usetheme{Singapore}
+\title{Making presentations ... with Beamer}
+\author{Solon Karapanagiotis \\ \vspace{0.5cm} \text{karapanagiotissolon@gmail.com}}
+\date{\today}
+\setbeamertemplate{sidebar right}{}
+\setbeamertemplate{footline}{%
+\hfill\usebeamertemplate***{navigation symbols}
+\hspace{0.5cm}\insertframenumber{}/\inserttotalframenumber}
+% position the logo
+\addtobeamertemplate{frametitle}{}{%
+\begin{textblock*}{100mm}(105mm,-1cm)
+\includegraphics[height=1cm,width=1cm,keepaspectratio]{KU_LeuvenR.png}
+\end{textblock*}
+
+\begin{textblock*}{100mm}(-10mm, 6.65cm)
+\includegraphics[height=2cm,width=12.8cm,keepaspectratio]{bottom.png}
+\end{textblock*}
+}
+
+
+\begin{document} %this is the body 
+
+
+\begin{frame}{}
+\titlepage
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{A minimalistic Example}
+	\begin{beamercolorbox}[rounded=true, shadow=true, wd=7cm]{block body example}
+		\begin{verbatim}
+			\documentclass{beamer}
+
+			\begin{document}
+
+			\begin{frame}
+			This is my first slide.
+			\end{frame}
+
+			\begin{frame}
+			This is my second (and last) slide.
+			\end{frame}
+
+			\end{document}
+		\end{verbatim}
+	\end{beamercolorbox}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{A minimalistic Example}
+	This is my first slide.
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{A minimalistic Example}
+	This is my second (and last) slide.
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{The Beamer class} %document class to create presentations 
+	LATEX class for creating presentations
+	\begin{itemize}
+		\item \alert{preamble} and \alert{body}
+		\pause %the items appear separately 
+		\item body contains sections and subsections, the different slides (called \alert{frames}) %everything is done frame by frame in beamer. In beamer, a presentation consists of a series of frames. Each frame in turn may consist of several slides (if there is more than one, they are called overlays).
+		\pause
+		\item support for \alert{overlays}
+		\pause
+		\item appearance defined by different \alert{themes}
+		\pause
+		\item {\color{red}disadvantage}: 
+		have to know LATEX in order to use beamer
+		\pause
+		\item {\color{red}advantage}:
+		if you know LATEX, you can use this knowledge when creating a presentation
+		\end{itemize}
+ \end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Preamble Items}
+	\begin{beamercolorbox}[rounded=true, shadow=true, wd=6.5cm]{block body example}
+		\begin{verbatim}
+		\documentclass[...]{beamer}
+		\end{verbatim} 
+	\end{beamercolorbox}	
+			Options: 
+			\begin{itemize}
+				\pause
+				\item 8pt, 9pt, 10pt, {\color{red}11pt}, 12pt, 14pt, 17pt, 20pt 
+				\pause 
+				\item \alert{draft} - no graphics, footlines, ... %to speed up the compilation
+				\pause
+				\item \alert{handout} - sets options suitable for handouts - no overlays
+				\pause
+				\item \alert{xcolor=x11names} or \alert{dvipsnames} - define more names for colors
+			\end{itemize} 
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Preamble Items}
+	\begin{beamerboxesrounded}[upper=set3, lower=block body example,shadow=true]{Titlepage}
+		\begin{verbatim}
+			\title{A very long Title \\ over 
+			several lines}
+			\subtitle{A subtitle}
+			\date{Latex Workshop 2015}
+			\author[S.Karapanagiotis]{Solon Karapanagiotis}
+			\institute[KUL]{Katholieke Universiteit Leuven}
+			%\logo{\includegraphics[scale=.25]{logo.pdf}}
+		\end{verbatim}
+	\end{beamerboxesrounded}
+	
+	\tiny{ 
+	\begin{itemize}
+		\item short versions of title, author,... are used in head- or footlines
+		\item If no date is entered, the current date is automatically entered. If no date is wanted, type \begin{verbatim} \date{} \end{verbatim}
+		\item several authors: 
+			\begin{verbatim}
+			\author{Solon Karapanagiotis\inst{1} \and Albert Einstein\inst{2}}
+			\institute{
+				\inst{1}Katholieke Universiteit Leuven \and
+				\inst{2}Princeton University}
+			\end{verbatim}
+	\end{itemize} 
+	}
+\end{frame}
+
+
+\begin{frame}
+		\title{A very long Title \\ over several lines}
+		\subtitle{A subtitle}
+		\date{Latex Workshop 2015}
+		\author[S. Karapanagiotis]{Solon Karapanagiotis}
+		\institute[KUL]{Katholieke Universiteit Leuven}
+		\maketitle{}
+\end{frame}
+
+
+\begin{frame}
+		\title{A very long Title \\ over several lines}
+		\subtitle{A subtitle}
+		\date{Latex Workshop 2015}
+		\author{Solon Karapanagiotis\inst{1} \and Albert Einstein\inst{2}}
+		\institute{\inst{1}Katholieke Universiteit Leuven \and
+				\inst{2}Princeton University}
+		\maketitle{}
+\end{frame}
+
+
+\begin{frame}[fragile, squeeze]
+	\frametitle{Body Items}
+	\underline{A frame defines one "page" of the presentation}
+	\begin{beamercolorbox}[rounded=true, shadow=true]{block body example}
+		\begin{verbatim}
+		\begin{frame}[...]{Title}{Subtitle} ... \end{frame}
+		\end{verbatim}
+	\end{beamercolorbox}	
+		Options: 
+			\begin{itemize}
+				\item \alert{plain} - no headlines, footlines, sidebars
+				\item \alert{squeeze} -  squeeze all vertical spaces  {\color{red}(this frame)}
+				\item \alert{shrink=0..100} - shrink everything by n percent
+				\item b, \alert{c} or t - vertically align at bottom, center or top 
+				\item \alert{fragile} - if using macros (like verbatim) which change catcodes  {\color{red}(this frame)}
+			\end{itemize} 
+\end{frame}	
+
+
+\begin{frame}[fragile]
+	\frametitle{Body Items}
+	\underline{A frame defines one "page" of the presentation}
+	\begin{beamercolorbox}[rounded=true, shadow=true]{block body example}
+		\begin{verbatim}
+		\begin{frame}[...]{Title}{Subtitle} ... \end{frame}
+		\end{verbatim}
+	\end{beamercolorbox}	
+		Options: 
+			\begin{itemize}
+				\item \alert{plain} - no headlines, footlines, sidebars
+				\item \alert{squeeze} -  squeeze all vertical spaces
+				\item \alert{shrink=0..100} - shrink everything by n percent
+				\item b, \alert{c} or t - vertically align at bottom, center or top 
+				\item \alert{fragile} - if using macros (like verbatim) which change catcodes  {\color{red}(this frame)}
+			\end{itemize} 
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Body Items}
+	Environments
+		\begin{itemize}
+			\item usual LATEX environments: \alert{itemize, enumerate, description, ...}
+       			\item usual AMS-LATEX environments: \alert{theorem, corollary, definition,...}
+			\item additional block environments: \alert{block, alertblock, exampleblock, beamercolorbox, beamerboxesrounded}
+			\item multicolumns: \alert{columns, column}
+		\end{itemize}	
+\end{frame}
+
+
+\begin{frame}[fragile, squeeze, shrink=8]
+	\frametitle{Block environments}
+	\vspace{4mm}
+	\begin{block}{A block}
+		\begin{verbatim}
+		\begin{block}{A block}
+		...
+		\end{block}
+		\end{verbatim}
+	\end{block}
+	
+	\begin{alertblock}{An alertblock}
+		\begin{verbatim}
+		\begin{alertblock}{An alert block}	
+		...
+		\end{alertblock}	
+		\end{verbatim}
+	\end{alertblock}		
+	
+	\begin{exampleblock}{An exampleblock}
+		\begin{verbatim}
+		\begin{exampleblock}{An example block}
+		...
+		\end{exampleblock}
+		\end{verbatim}
+	\end{exampleblock}	
+\end{frame}
+
+
+\begin{frame}[fragile, squeeze, shrink=7]
+	\frametitle{beamercolorbox and beamerboxesrounded}
+	\vspace{4mm}
+	Define beamercolors ( = pair of colors):
+	\begin{verbatim}
+		\setbeamercolor{set1} {bg=blue!60, fg=green} 
+		\setbeamercolor{set2}{bg=red!40, fg=yellow}
+	\end{verbatim}
+	
+	\begin{beamercolorbox}[rounded=true]{set1}{Title}
+		\begin{verbatim}
+		\begin{beamercolorbox}[rounded=true]{set1}{Title}
+		....
+		\end{beamercolorbox}
+		\end{verbatim}
+	\end{beamercolorbox}
+	
+	\begin{beamerboxesrounded}[lower=set2,upper=set1, shadow=true]{A TITLE}
+		\begin{verbatim}
+		\begin{beamerboxesrounded}[lower=set2,upper=set1,
+		shadow=true] {A TITLE}
+		...
+		\end{beamerboxesrounded}
+		\end{verbatim}
+	\end{beamerboxesrounded}	
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Multiple columns}
+	\begin{columns}
+		\begin{column}[b]{5cm}
+			\begin{itemize}
+			\item two columns of 5cm width
+			\item text, blocks other environments
+			\end{itemize}
+		\end{column}
+		
+		\begin{column}[b]{5cm}
+			\begin{beamercolorbox}[rounded=true, shadow=true, wd=5cm]{block body example}
+			\begin{verbatim}
+			\begin{columns}
+				\begin{column}[b]{5cm}
+				....
+				\end{column}
+		
+				\begin{column}[b]{5cm}
+				.....
+				\end{column}
+			\end{columns}
+			\end{verbatim}
+			\end{beamercolorbox}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Overlays}
+		\begin{beamercolorbox}[rounded=true, shadow=true,wd=5.5cm]{block body example}
+		\begin{verbatim}
+			\begin{itemize}
+			\item my first item
+			\item my second item
+			\item \dots
+			\end{itemize}
+		\end{verbatim}
+		\end{beamercolorbox}
+	\begin{itemize}
+		\item my first item
+		\item my second item
+		\item \dots
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Overlays}
+		\begin{beamercolorbox}[rounded=true, shadow=true, wd=5.5cm]{block body example}
+		\begin{verbatim}
+			\begin{itemize}
+			\item my first item
+			\pause
+			\item my second item
+			\pause
+			\item \dots
+			\end{itemize}
+		\end{verbatim}
+		\end{beamercolorbox}
+	\begin{itemize}
+		\item my first item
+		\pause
+		\item my second item
+		\pause
+		\item \dots
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile,shrink=1]
+	\frametitle{Overlays}
+		\begin{beamercolorbox}[rounded=true, shadow=true, wd=10cm]{block body example}
+		\begin{verbatim}
+			\begin{itemize}
+			\item \only<1> {Text only for first slide} 
+			\pause
+			\item my first item.
+			\pause
+			\item my second item.
+			\pause
+			\item \dots
+			\end{itemize}
+		\end{verbatim}
+		\end{beamercolorbox}
+	\begin{itemize}
+		\item \only<1> {Text only for first slide} 
+		\pause
+		\item my first item.
+		\pause
+		\item my second item.
+		\pause
+		\item \dots
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile, shrink=15]
+	\frametitle{Overlays}
+		\begin{beamercolorbox}[rounded=true, shadow=true, wd=13cm]{block body example}
+		\begin{verbatim}
+			\begin{itemize}
+			\temporal<3-4> {Shown on 1, 2}{Shown on 3, 4}{Shown 5, ...}
+			\item my first item
+			$\rightarrow$ \alt<3>{On slide 3}{Not on slide 3.} 
+			\pause
+			\item my second item
+			\pause
+			\item my third item 
+			\pause
+			\item my fourth item
+			\end{itemize}
+		\end{verbatim}
+		\end{beamercolorbox}
+
+		\temporal<3-4> {Shown on 1, 2}{Shown on 3, 4}{Shown 5, ...}
+		\begin{itemize}
+		\item my first item $\rightarrow$ \alt<3>{On slide 3}{Not on slide 3.} 
+		\pause
+		\item my second item
+		\pause
+		\item my third item 
+		\pause
+		\item my fourth item
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Cover parts ...}
+	\begin{itemize}
+		\item default 
+		\color{blue}
+		\begin{verbatim} 
+		\setbeamercovered{invisible}
+		\end{verbatim}
+		\item \color{black}{other possibilities} 
+		\color{blue}
+		\begin{verbatim} 
+		\setbeamercovered{transparent}
+		\end{verbatim}
+		\color{blue}
+		\begin{verbatim} 
+		\setbeamercovered{transparent=40}  default=15%
+		\end{verbatim}
+		\color{red}
+		\begin{verbatim} 
+		\setbeamercovered{dynamic}
+		\end{verbatim}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile,squeeze]
+	\frametitle{Hyperlinks}
+		\begin{beamerboxesrounded}[upper=set3, lower=block body example,  shadow=true]{Targets}
+		\begin{verbatim}
+		\hypertarget{bla1}{} into some frame	
+		\end{verbatim}
+		\end{beamerboxesrounded}
+		
+		\begin{beamerboxesrounded}[upper=set3, lower=set4, shadow=true]{Add hyperlinks in order to jump to the targets:}
+		\hyperlink{bla1}{\beamergotobutton{go to bla1}} 
+		\end{beamerboxesrounded}
+		
+			\begin{beamercolorbox}[rounded=true, shadow=true]{block body example}
+			\begin{verbatim}
+			\hyperlink{bla1}{\beamergotobutton{go to bla1}} 
+			\end{verbatim}
+		\end{beamercolorbox}
+		
+		\begin{beamerboxesrounded}[upper=set3, lower=block body example, shadow=true]{Buttons}
+		\begin{verbatim}
+		go to x \beamerskipbutton{go to x}
+		go to y \beamerreturnbutton{go to y}
+		\end{verbatim}
+		\beamerskipbutton{go to x}
+		\beamerreturnbutton{go to y}
+		\end{beamerboxesrounded}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Themes}
+		\begin{beamerboxesrounded}[upper=set3, lower=block body example, shadow=true]{Completely define the appearance of the presentation}
+			\begin{verbatim}
+			\usetheme{default} - very simple	
+			\usetheme{Madrid} - blueish, no navigation bars
+			\usetheme{CambridgeUS} - red, no navigation bars
+			\usetheme{Antibes} - blueish, tree-like navigation bar
+			\usetheme{Berkeley} - blueish, table of contents 
+			in sidebar
+			\usetheme{Marburg} - sidebar on the right
+			\usetheme{Berlin} - navigation bar in the headline
+			\usetheme{Szeged} - navigation bar in the headline,
+			 horizontal lines
+			\usetheme{Malmoe} - section/subsection in the headline
+			\end{verbatim}
+		\end{beamerboxesrounded}	
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Themes}
+	\alert{inner theme} specifies appearance of blocks, enumerations and other
+	environments inside the frame\\
+	\alert{outer theme} specifies head- and footlines, sidebar, logo, frame title\\
+	\alert{color theme} specifies colors, can be complete, inner or outer\\
+	\alert{font theme} specifies fonts
+		\begin{beamerboxesrounded}[upper=set3, lower=block body example, shadow=true]{This defines the Madrid presentation theme:}
+			\begin{verbatim}
+			\usecolortheme{whale} % outer color
+			\usecolortheme{orchid} % inner
+			\useinnertheme[shadow]{rounded}
+			\useoutertheme{infolines}
+			\usefonttheme{default}
+			\end{verbatim}
+		\end{beamerboxesrounded}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Themes}
+	\alert{inner theme} 
+		\begin{itemize}
+		\item default, circles, rectangles, rounded, inmargin
+		\end{itemize}
+	\alert{outer theme} 
+		\begin{itemize}
+		\item default, infolines, miniframes, smoothbars, sidebar, split, shadow, tree,
+		smoothtree
+		\end{itemize}
+	\alert{font theme} 
+		\begin{itemize}
+		\item default, serif, structurebold, structureitalicserif, structuresmallcapsserif
+		\end{itemize}
+	\alert{color theme} 
+		\begin{itemize}
+		\item complete: albatross, beetle, crane, fly, seagull, wolferine, beaver
+		\item inner: lily, orchid, rose
+		\item outer: shale, seahorse, dolphin
+		\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Animations and Movies}
+		\begin{beamercolorbox}[rounded=true, shadow=true]{block body example}
+		\begin{verbatim}
+		\usepackage{multimedia}
+		\movie [...]{banner}{movie filename}
+		\end{verbatim}
+		\end{beamercolorbox}
+	Any movie file that can be displayed with QuickTime should work but the file must be in the same folder as the source file. Clicking the banner in the slide will run the movie, but the pdf file {\color{red}must be opened in Acrobat.}\\
+	The movie will {\color{red}not} be embedded into the pdf file unless explicitly specified.
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Animations and Movies}
+	 \begin{beamercolorbox}[rounded=true, shadow=true]{block body example}
+		\begin{verbatim}
+		\movie[height=5cm,width=8cm, showcontrols] 
+		{HopeItWorks}{2513.m4v}
+		\end{verbatim}
+	\end{beamercolorbox}
+	\movie[height=4cm,width=8cm, showcontrols] {HopeItWorks}{video2.m4v}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Animations and Movies}
+		\movie[label=cells,width=8cm,height=5cm,poster,showcontrols, palindrome]{}{video.m4v}
+		\vspace{1cm}
+		\hyperlinkmovie[start=5s,duration=15s]{cells}{\beamerbutton{Show the middle stage}} \end{frame}
+
+
+\begin{frame}
+	\frametitle{Animations and Movies}
+	\includemedia[
+	width=6cm,height=5cm, % 16:9
+	activate=pageopen,
+	flashvars={
+	modestbranding=1 % no YT logo in control bar
+	&autohide=1 % controlbar autohide
+	&showinfo=0 % no title and other info before start
+	&rel=0 % no related videos after end
+	}
+	]{}{http://www.youtube.com/v/r382kfkqAF4?rel=0}
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Figures}
+	\begin{beamercolorbox}[rounded=true, shadow=true]{block body example}
+		\begin{verbatim}
+		\begin{figure}
+		\includegraphics[height=3cm]{dragon}
+		\caption{This caption is placed below the figure.}
+		\end{figure} 
+		\end{verbatim}
+	\end{beamercolorbox}
+	
+	\begin{figure}
+	\includegraphics[height=3cm]{dragon.jpg}
+	\caption{This caption is placed below the figure.}
+	\end{figure} 
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\frametitle{Zooming Figures}
+	\begin{itemize}
+	\item (x,y): Upper left coordinate point
+	\item (w,h): Width and height for zooming
+	\end{itemize}
+	\begin{beamercolorbox}[rounded=true, shadow=true]{block body example}
+		\begin{verbatim}
+		\begin{figure}
+		\framezoom<1><2>[border](3cm,1cm)(3cm,3cm)
+		\framezoom<1><3>[border](3cm,2cm)(4cm,4cm)
+		\framezoom<1><4>[border](3cm,2cm)(3cm,5cm)
+		\includegraphics{dragon}
+		\caption{This caption is placed below the figure.}
+		\end{figure} 
+		\end{verbatim}
+	\end{beamercolorbox}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Zooming Figures}
+	\begin{figure}
+		\framezoom<1><2>[border](2cm,2cm)(3cm,3cm)
+		\framezoom<1><3>[border](3cm,2cm)(4cm,4cm)
+		\framezoom<1><4>[border](3cm,2cm)(3cm,5cm)
+		\includegraphics{dragon}
+		\caption{This caption is placed below the figure.}
+	\end{figure} 
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Getting Help}
+	\begin{itemize}
+		\item Read the User's Guide \url{http://mirror.ox.ac.uk/sites/ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}
+		\item Google "latex beamer"
+		\item Try searching TeX-sx (\url{tex.stackexchange.com}). Perhaps someone
+has already reported a similar problem and someone has found a solution. Ask ! 
+	\end{itemize}
+	
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Final Thoughts} %from the user's guide http://www.math.binghamton.edu/erik/beameruserguide.pdf
+	Till Tantau:
+	\begin{itemize}
+			\item"I created beamer mainly in my spare time."
+			\pause
+			\item"I created the first version of beamer for my PhD defense presentation"
+			\pause
+			\item "After that, things somehow got out of hand."
+ 	\end{itemize}
+		https://bitbucket.org/rivanvx/beamer/wiki/Home
+\end{frame}
+
+
+\end{document}
