@@ -19,17 +19,16 @@
 %Template
 \usepackage{textpos} % package for the positioning
 \usepackage{graphicx}
-%\graphicspath{C:/Users/Sandokan/GoogleDrive/LaTeX Sessions/Beamer template}
 \usetheme{Singapore}
 \title{Making presentations ... with Beamer}
-\author{Solon Karapanagiotis \\ \vspace{0.5cm} \text{karapanagiotissolon@gmail.com}}
+\author{Solon Karapanagiotis \\ \vspace{0.5cm} \text{karapanagiotissolon@gmail.com}\vspace{0.7cm} \text{https://github.com/karapa/Beamer.git}}
 \date{\today}
 \setbeamertemplate{sidebar right}{}
-\setbeamertemplate{footline}{%
+\setbeamertemplate{footline}{
 \hfill\usebeamertemplate***{navigation symbols}
 \hspace{0.5cm}\insertframenumber{}/\inserttotalframenumber}
 % position the logo
-\addtobeamertemplate{frametitle}{}{%
+\addtobeamertemplate{frametitle}{}{
 \begin{textblock*}{100mm}(105mm,-1cm)
 \includegraphics[height=1cm,width=1cm,keepaspectratio]{KU_LeuvenR.png}
 \end{textblock*}
@@ -87,7 +86,7 @@
 	\begin{itemize}
 		\item \alert{preamble} and \alert{body}
 		\pause %the items appear separately 
-		\item body contains sections and subsections, the different slides (called \alert{frames}) %everything is done frame by frame in beamer. In beamer, a presentation consists of a series of frames. Each frame in turn may consist of several slides (if there is more than one, they are called overlays).
+		\item body contains sections and subsections, the different slides (called \alert{frames}).
 		\pause
 		\item support for \alert{overlays}
 		\pause
@@ -636,7 +635,7 @@ has already reported a similar problem and someone has found a solution. Ask !
 
 
 \begin{frame}
-	\frametitle{Final Thoughts} %from the user's guide http://www.math.binghamton.edu/erik/beameruserguide.pdf
+	\frametitle{Final Thoughts} 
 	Till Tantau:
 	\begin{itemize}
 			\item"I created beamer mainly in my spare time."
